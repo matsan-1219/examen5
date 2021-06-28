@@ -1,0 +1,38 @@
+
+<body style="background-color:#f1bbd6;">
+
+<div class="container">
+  <div class="card bg-light mb-3">
+ 
+     <h2 >Administración de artículos</h2>
+    </div>
+  
+    <table border="1" *ngIf="hayRegistros(); else sinarticulos">
+      <tr>
+        <td>Codigo</td><td>Descripcion</td><td>Precio</td><td>Borrar</td><td>Seleccionar</td>
+      </tr>
+      <tr *ngFor="let art of articulos">
+        <td>{{art.codigo}}</td>
+        <td>{{art.descripcion}}</td>
+        <td>{{art.precio}}</td>
+        <td><button (click)="baja(art.codigo)">Borrar?</button></td>
+        <td><button (click)="seleccionar(art.codigo)">Seleccionar</button></td>        
+      </tr>
+    </table>
+    <ng-template #sinarticulos><p>No hay articulos.</p></ng-template>
+    <div>
+      <p>
+        Descripcion:<input type="text" [(ngModel)]="art.descripcion" />
+      </p>
+      <p>
+        Precio:<input type="number" [(ngModel)]="art.precio" />
+      </p>            
+      <p><button (click)="alta()" class="btn btn-dark">Agregar</button>
+        <br>
+        
+      <button (click)="modificacion()"class="btn btn-dark" >Modificar</button></p>
+      <br>
+
+    </div>  
+</div>
+</body>
